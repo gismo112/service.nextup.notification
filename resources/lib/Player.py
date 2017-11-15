@@ -575,7 +575,7 @@ class Player(xbmc.Player):
                         if shouldshowpostplay:
                             self.postplaywindow = None
 
-                         xbmc.executeJSONRPC(
+                        xbmc.executeJSONRPC(
                             '{ "jsonrpc": "2.0", "id": 1, "method": "Player.Stop", '
                             '"params": {"playerid" :1}}')
                         xbmc.sleep(900)   
