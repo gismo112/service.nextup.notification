@@ -95,7 +95,7 @@ class Player(xbmc.Player):
     def onPlayBackStarted(self):
         # Will be called when xbmc starts playing a file
         self.postplaywindow = None
-        WINDOW = xbmcgui.Window(20000)
+        WINDOW = xbmcgui.Window(10000)
         WINDOW.clearProperty("NextUpNotification.NowPlaying.DBID")
         WINDOW.clearProperty("NextUpNotification.NowPlaying.Type")
         # Get the active player
@@ -578,7 +578,7 @@ class Player(xbmc.Player):
                         xbmc.executeJSONRPC(
                             '{ "jsonrpc": "2.0", "id": 3, "method": "Player.Stop", '
                             '"params": {"playerid" :1}}')
-                        xbmc.sleep(1000)   
+                        xbmc.sleep(2000)   
                         # Play media
                         xbmc.executeJSONRPC(
                             '{ "jsonrpc": "2.0", "id": 0, "method": "Player.Open", '
