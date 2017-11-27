@@ -77,6 +77,7 @@ class Player(xbmc.Player):
             result = unicode(result, 'utf-8', errors='ignore')
             self.logMsg("Got active player " + result, 2)
             result = json.loads(result)
+            xbmc.sleep(1000)
 
         if 'result' in result and result["result"][0] is not None:
             playerid = result["result"][0]["playerid"]
@@ -103,7 +104,8 @@ class Player(xbmc.Player):
         if 'result' in result:
             itemtype = result["result"]["item"]["type"]
             if itemtype == "episode":
-                itemtitle = result["result"]["item"]["showtitle"]
+                itemtitle = result["result"]["item"]["showtitle"].encode('utf-8')
+                itemtitle = utils.unicodetoascii(itemtitle)
                 WINDOW.setProperty("NextUpNotification.NowPlaying.Type", itemtype)
                 tvshowid = result["result"]["item"]["tvshowid"]
                 WINDOW.setProperty("NextUpNotification.NowPlaying.DBID", str(tvshowid))
@@ -260,7 +262,8 @@ class Player(xbmc.Player):
             playMode = addonSettings.getSetting("autoPlayMode")
             currentepisodenumber = result["result"]["item"]["episode"]
             currentseasonid = result["result"]["item"]["season"]
-            currentshowtitle = result["result"]["item"]["showtitle"]
+            currentshowtitle = result["result"]["item"]["showtitle"].encode('utf-8')
+            currentshowtitle = utils.unicodetoascii(currentshowtitle)
             tvshowid = result["result"]["item"]["tvshowid"]
             shortplayMode = addonSettings.getSetting("shortPlayMode")
             shortplayNotification= addonSettings.getSetting("shortPlayNotification")
@@ -442,7 +445,8 @@ class Player(xbmc.Player):
             playMode = addonSettings.getSetting("autoPlayMode")
             currentepisodenumber = result["result"]["item"]["episode"]
             currentseasonid = result["result"]["item"]["season"]
-            currentshowtitle = result["result"]["item"]["showtitle"]
+            currentshowtitle = result["result"]["item"]["showtitle"].encode('utf-8')
+            currentshowtitle = utils.unicodetoascii(currentshowtitle)
             tvshowid = result["result"]["item"]["tvshowid"]
             shortplayMode = addonSettings.getSetting("shortPlayMode")
             shortplayNotification= addonSettings.getSetting("shortPlayNotification")
@@ -574,12 +578,13 @@ class Player(xbmc.Player):
                         # if in postplaypreview mode clear the post play window as its not needed now
                         if shouldshowpostplay:
                             self.postplaywindow = None
-
+                        # Stop Player
                         xbmc.executeJSONRPC(
                             '{ "jsonrpc": "2.0", "id": 3, "method": "Player.Stop", '
                             '"params": {"playerid" :1}}')
-                        xbmc.sleep(2000)   
-                        # Play media
+                        xbmc.sleep(2000)                      
+
+						# Play media
                         xbmc.executeJSONRPC(
                             '{ "jsonrpc": "2.0", "id": 0, "method": "Player.Open", '
-                            '"params": { "item": {"episodeid": ' + str(episode["episodeid"]) + '} } }')
+                            '"params": { "item": {"episodeid": ' + str(episode["episodeid"]) + '} }, "options" :{ "resume":true } }')
