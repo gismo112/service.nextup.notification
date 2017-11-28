@@ -580,7 +580,7 @@ class Player(xbmc.Player):
                             self.postplaywindow = None
                         # Stop Player
                         stopPlayer = addonSettings.getSetting("stopPlayer")
-                        if stopPlayer == 'true'
+                        if stopPlayer == 'true':
                             xbmc.executeJSONRPC(
                                 '{ "jsonrpc": "2.0", "id": 3, "method": "Player.Stop", '
                                 '"params": {"playerid" :1}}')
