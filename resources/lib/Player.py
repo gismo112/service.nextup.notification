@@ -584,7 +584,7 @@ class Player(xbmc.Player):
                             xbmc.executeJSONRPC(
                                 '{ "jsonrpc": "2.0", "id": 3, "method": "Player.Stop", '
                                 '"params": {"playerid" :1}}')
-                                xbmc.sleep(2000)                      
+                            xbmc.sleep(2000)                      
                         
                         # Play media
                         xbmc.executeJSONRPC(
