@@ -579,12 +579,14 @@ class Player(xbmc.Player):
                         if shouldshowpostplay:
                             self.postplaywindow = None
                         # Stop Player
-                        xbmc.executeJSONRPC(
-                            '{ "jsonrpc": "2.0", "id": 3, "method": "Player.Stop", '
-                            '"params": {"playerid" :1}}')
-                        xbmc.sleep(2000)                      
-
-						# Play media
+                        stopPlayer = addonSettings.getSetting("stopPlayer")
+                        if stopPlayer == 'true'
+			    xbmc.executeJSONRPC(
+                                '{ "jsonrpc": "2.0", "id": 3, "method": "Player.Stop", '
+                                '"params": {"playerid" :1}}')
+                                xbmc.sleep(2000)                      
+                        
+                        # Play media
                         xbmc.executeJSONRPC(
                             '{ "jsonrpc": "2.0", "id": 0, "method": "Player.Open", '
                             '"params": { "item": {"episodeid": ' + str(episode["episodeid"]) + '} }, "options" :{ "resume":true } }')
