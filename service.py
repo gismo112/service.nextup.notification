@@ -44,7 +44,7 @@ class Service():
                 break
             if xbmc.Player().isPlaying():
                 try:
-                    xbmc.sleep(2000)
+                    xbmc.sleep(5000)
                     playTime = xbmc.Player().getTime()
 
                     totalTime = xbmc.Player().getTotalTime()
