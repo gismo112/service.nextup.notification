@@ -17,6 +17,7 @@
         <setting id="shortPlayMode" type="bool" label="30017" default="false" visible="true" enable="true"/>
         <setting id="shortPlayLength" type="number" label="30018" default="10" visible="true" enable="true"/>
         <setting id="shortPlayNotification" type="bool" label="30019" default="true" visible="true" enable="true"/>
+        <setting id="stopPlayer" type="bool" label="30033" default="false" visible="true" enable="true"/>
     </category>
     <category label="30026">
         <setting id="enableNextUpSkip" type="bool" label="30027" default="false" visible="true" enable="true"/>
@@ -24,6 +25,5 @@
         <setting id="enableAutoSkip" type="bool" label="30032" default="false" visible="eq(-2,true)" enable="true"/>
         <setting id="enableNextUpSkip3rdP" type="bool" label="30029" default="false" visible="true" enable="true"/>
         <setting id="enableNextUpSkipNoPause" type="bool" label="30030" default="false" visible="true" enable="true"/>
-        <setting id="stopPlayer" type="bool" label="30033" default="false" visible="true" enable="true"/>
     </category>
 </settings>
