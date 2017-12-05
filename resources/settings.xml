@@ -24,5 +24,6 @@
         <setting id="enableAutoSkip" type="bool" label="30032" default="false" visible="eq(-2,true)" enable="true"/>
         <setting id="enableNextUpSkip3rdP" type="bool" label="30029" default="false" visible="true" enable="true"/>
         <setting id="enableNextUpSkipNoPause" type="bool" label="30030" default="false" visible="true" enable="true"/>
+        <setting id="stopPlayer" type="bool" label="30031" default="false" visible="true" enable="true"/>
     </category>
 </settings>
