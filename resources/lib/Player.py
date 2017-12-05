@@ -650,6 +650,13 @@ class Player(xbmc.Player):
                         # if in postplaypreview mode clear the post play window as its not needed now
                         if shouldshowpostplay:
                             self.postplaywindow = None
+                        # Stop Player
+                        stopPlayer = addonSettings.getSetting("stopPlayer")
+                        if stopPlayer == 'true':
+                            xbmc.executeJSONRPC(
+                                '{ "jsonrpc": "2.0", "id": 3, "method": "Player.Stop", '
+                                '"params": {"playerid" :1}}')
+                                 xbmc.sleep(2000)
 
                         # Play media
                         xbmc.executeJSONRPC(
